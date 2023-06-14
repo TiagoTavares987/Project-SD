@@ -1,13 +1,13 @@
 package rmi.advancedWars.client.advancedWarsGame.buildings;
 
-//import engine.Game;
+//import rabbitmq.advancedWars.client.game.engine.Game;
 
 public class Shipyard extends Base {
 
 	public Shipyard(int owner, int xx, int yy) {
 		super(owner, xx, yy);
 		name="Capital";
-		desc="Creates water units.";
+		desc="Creates water rabbitmq.advancedWars.client.game.units.";
 		img = 4;
 		Menu = "shipyard";
 		//Game.map.map[yy][xx].swim = true;

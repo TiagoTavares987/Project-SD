@@ -53,11 +53,15 @@ public class Observer {
         this.mapLv = mapLv;
         this.ply = ply;
         this.gameId = gameId;
+        int nPlayers = 4;
+        if (mapLv.equals("SmallVs"))
+            nPlayers = 2;
 
         bindExchangeToChannelRabbitMQ();
         attachConsumerToChannelExchangeWithKey();
-
-        channelToRabbitMq.basicPublish(exchangeName, "server." + createOrJoin, null, (gameId + "-" + mapLv).getBytes(messageFormat)) ;
+        System.out.println("observer server." + createOrJoin);
+        // mensagem de arranque create ou join para o sv
+        channelToRabbitMq.basicPublish(exchangeName, "server." + createOrJoin, MessageProperties.PERSISTENT_TEXT_PLAIN, (gameId + "-" + nPlayers).getBytes(messageFormat)) ;
     }
 
     /**
@@ -76,23 +80,24 @@ public class Observer {
 
             String queueName=channelToRabbitMq.queueDeclare().getQueue();//importante
 
-            String routingKey="";
-            channelToRabbitMq.queueBind(queueName, exchangeName + "Server " + this.mapLv, routingKey);//importante
+            String routingKey="client." + gameId;
+            channelToRabbitMq.queueBind(queueName, exchangeName, routingKey);//importante
 
             Logger.getLogger(this.getClass().getName()).log(Level.INFO, " Created consumerChannel bound to Exchange " + this.exchangeName + "...");
 
             /* Use a DeliverCallback lambda function instead of DefaultConsumer to receive messages from queue;
                DeliverCallback is an interface which provides a single method:
                 void handle(String tag, Delivery delivery) throws IOException; */
+
+            // recebe msg do servidor
             DeliverCallback deliverCallback=(consumerTag, delivery) -> {
+                System.out.println(" [x] Consumer Tag [" + consumerTag + "] - Callback invoked!");
                 String message=new String(delivery.getBody(), messageFormat);
 
                 //Store the received message
-                setReceivedMessage(message);
-                if (message.contains("Pressed"))
-                    System.out.println(" [x] Consumer Tag [" + consumerTag + "] - Received '" + message + "'");
-
-
+                System.out.println("observer" + message);
+                //setReceivedMessage(message);
+                game.updateGame(message);
             };
             CancelCallback cancelCallback=consumerTag -> {
                 System.out.println(" [x] Consumer Tag [" + consumerTag + "] - Cancel Callback invoked!");
@@ -114,8 +119,9 @@ public class Observer {
      */
     public void sendMessage(String msgToSend) throws IOException {
         String routingKey="server." + gameId;
+        System.out.println("send routing " + routingKey);
         BasicProperties prop = MessageProperties.PERSISTENT_TEXT_PLAIN;
-        channelToRabbitMq.basicPublish(exchangeName, routingKey, prop, msgToSend.getBytes(messageFormat)) ;
+        channelToRabbitMq.basicPublish(exchangeName, routingKey, prop, msgToSend.getBytes(messageFormat)) ; // vai parar ao deliver call back do servidor
     }
 
     /**

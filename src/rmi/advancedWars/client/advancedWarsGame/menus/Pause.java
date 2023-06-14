@@ -58,7 +58,7 @@ public class Pause implements ActionListener {
 		Object s = e.getSource();
 		if (s==Quit) {
 			//MenuHandler.CloseMenu();
-			//Game.gui.LoginScreen();
+			//Game.rabbitmq.advancedWars.client.game.gui.LoginScreen();
 			Game.observer.getSubjectRI().setState(new State(String.valueOf(Game.observer.getId()), String.valueOf(10005)));
 			Game.exit = 2;
 			//System.exit(0);

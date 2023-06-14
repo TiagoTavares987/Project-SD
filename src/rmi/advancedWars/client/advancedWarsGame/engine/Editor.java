@@ -57,7 +57,7 @@ public class Editor {
 	}
 	
 	private void AddBuilding() {
-		moved = false;//Keeps game from generating lots of useless buildings.
+		moved = false;//Keeps game from generating lots of useless rabbitmq.advancedWars.client.game.buildings.
 		
 		int newbld = (Game.map.width * selecty) + selectx;//editor id of the new city (before it is made)
 		

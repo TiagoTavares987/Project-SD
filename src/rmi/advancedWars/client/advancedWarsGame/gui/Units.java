@@ -5,8 +5,8 @@ import rmi.advancedWars.client.advancedWarsGame.engine.Game;
 import rmi.advancedWars.client.advancedWarsGame.units.Base;
 
 /**
- * This will draw all of the currently visible units. 
- * Units not owned by the current player are turned around. (Simple way of telling units with the same color apart)
+ * This will draw all of the currently visible rabbitmq.advancedWars.client.game.units.
+ * Units not owned by the current player are turned around. (Simple way of telling rabbitmq.advancedWars.client.game.units with the same color apart)
  * @param g = The Graphics2D to drawn too.
  * @param resize = Size setup of the window to use.
  * @author SergeDavid

@@ -8,13 +8,13 @@ import rmi.advancedWars.client.advancedWarsGame.units.*;
 /**
  * When adding a new commander, building, or unit to the game, just add the class to the Create#### switch.
  * Load#### creates a unit, commander, city and then sets its properties to match its state when you saved the game.
- * For finding type when Loading, it takes the units name, and compares it to the Display# list (reference list).
+ * For finding type when Loading, it takes the rabbitmq.advancedWars.client.game.units name, and compares it to the Display# list (reference list).
  * The reference lists will be automatically updated thanks to ListData() constructor.
  * @author SergeDavid
  * @version 0.2
  */
 public class ListData {
-	/**Starting ListData() will load all of the commanders, buildings, and units into reference lists (display#) for use in menu's.*/
+	/**Starting ListData() will load all of the commanders, rabbitmq.advancedWars.client.game.buildings, and rabbitmq.advancedWars.client.game.units into reference lists (display#) for use in menu's.*/
 	public ListData() {
 		//These loop for a max of 100 items (shouldn't hit that high), a null return from Create###(); will end the loop.
 		for (int i=0; i<100 ;i++) {
@@ -58,15 +58,15 @@ public class ListData {
 	}
 	/**
 	 * This creates a building (town/barracks/seaport) [MapParser]
-	 * @param owner = The player that owns the building (-1 to skip formatting) (15 is neutral, 12~14 are unused (and more if I lower max players from 12))
+	 * @param owner = The player that owns the building (-1 to skip formatting) (15 is neutral, 12~14 are unused (and more if I lower max rabbitmq.advancedWars.client.game.players from 12))
 	 * @param xx
 	 * @param yy
 	 * @param type = The building to be created in question.
 	 * @returnIt should never return null except for the reference list [ListData();]
 	 * 
-	 * @exception WARNING: removed the filter for proper owner buildings.
+	 * @exception WARNING: removed the filter for proper owner rabbitmq.advancedWars.client.game.buildings.
 	 */
-	public rmi.advancedWars.client.advancedWarsGame.buildings.Base CreateCity(int owner, int xx, int yy, int type) {//15 = Neutral, 12, 13, 14 are unused. (12 max players)
+	public rmi.advancedWars.client.advancedWarsGame.buildings.Base CreateCity(int owner, int xx, int yy, int type) {//15 = Neutral, 12, 13, 14 are unused. (12 max rabbitmq.advancedWars.client.game.players)
 		//TODO: Warning: I removed the check to make sure each building is legal.
 		System.out.println("List level owner: " + owner);
 		switch (type) {

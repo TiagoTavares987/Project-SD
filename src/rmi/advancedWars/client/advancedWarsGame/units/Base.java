@@ -44,9 +44,9 @@ public class Base {
 	
 	//Battle Settings 
 	//TODO: Add alternate weapon setup
-	public boolean MoveAndShoot = true;//Allows units to move then shoot, or make them stay in the same location in order to attack.
+	public boolean MoveAndShoot = true;//Allows rabbitmq.advancedWars.client.game.units to move then shoot, or make them stay in the same location in order to attack.
 	public int MaxAtkRange = 1;//How many squares away from the unit can it attack. (1 being default, 0 being none)
-	public int MinAtkRange = 1;//This is used for ranged units such as artillery.
+	public int MinAtkRange = 1;//This is used for ranged rabbitmq.advancedWars.client.game.units such as artillery.
 	public int[] MainAttack = {//Base damage to each unit.
 			55,50,10,20,//Ground
 			20,//Air
@@ -80,7 +80,7 @@ public class Base {
 	public boolean PathCheck(int destx, int desty) {
 		if (destx<0||desty<0) {return false;}
 		if (destx>=Game.map.width||desty>=Game.map.height) {return false;}
-		for (Base unit : Game.units) {//Allows units in the same team to walk past each other.
+		for (Base unit : Game.units) {//Allows rabbitmq.advancedWars.client.game.units in the same team to walk past each other.
 			if (unit.x==destx&&unit.y==desty&&Game.player.get(unit.owner).team!=Game.player.get(owner).team) {
 				return false;
 			}
@@ -108,7 +108,7 @@ public class Base {
 	 * Attacks someone at X,Y and either returns fire or not.
 	 * @param destx = Attacked Y location
 	 * @param desty = Attacked X location
-	 * @param returnfire = Allows units to shoot back and not cause a never ending loop until someone dies.
+	 * @param returnfire = Allows rabbitmq.advancedWars.client.game.units to shoot back and not cause a never ending loop until someone dies.
 	 * @return Returns true if the unit attacked something, returns false if it didn't. (so it can see if it can capture a building)
 	 */
 	public boolean attack(int destx, int desty, boolean returnfire) {

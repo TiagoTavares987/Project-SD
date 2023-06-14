@@ -28,7 +28,7 @@ public class Base {
 	public int y;
 	
 	public Base(int owner,int xx, int yy) {
-		//15 = Neutral, 12~14 are unused. (12 max players)
+		//15 = Neutral, 12~14 are unused. (12 max rabbitmq.advancedWars.client.game.players)
 		System.out.println("Base level owner: " + owner);
 		this.owner=owner;
 		x=xx;

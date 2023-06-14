@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -14,9 +15,10 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import rmi.advancedWars.client.advancedWarsGame.engine.Game;
 import rmi.advancedWars.client.advancedWarsGame.units.Base;
+import rmi.advancedWars.server.State;
 
 /**
- * Displays a list of available units, and some information about them to buy.
+ * Displays a list of available rabbitmq.advancedWars.client.game.units, and some information about them to buy.
  * @author SergeDavid
  * @version 0.2
  */
@@ -92,7 +94,13 @@ public class City implements ActionListener,ListSelectionListener {
 	
 	@Override public void actionPerformed(ActionEvent e) {
 		Object s = e.getSource();
-		if (s==Return) {MenuHandler.CloseMenu();}
+		if (s==Return) {
+			try {
+				Game.observer.getSubjectRI().setState(new State(String.valueOf(Game.observer.getId()), String.valueOf(10002)));
+			} catch (RemoteException ex) {
+				throw new RuntimeException(ex);
+			}
+		}
 		else if (s==Buy) {
 			Game.btl.Buyunit(ids[Units.getSelectedIndex()], x, y);
 			MenuHandler.CloseMenu();

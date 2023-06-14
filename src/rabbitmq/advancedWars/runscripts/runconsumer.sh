@@ -5,7 +5,7 @@
 #REM Date: 10/04/2018
 #REM ************************************************************************************
 #REM Script usage: runclient <role> (where role should be: producer / consumer)
-source ./setenv.sh client
+source ./setenv.sh server
 
 echo ${ABSPATH2CLASSES}
 cd ${ABSPATH2CLASSES}

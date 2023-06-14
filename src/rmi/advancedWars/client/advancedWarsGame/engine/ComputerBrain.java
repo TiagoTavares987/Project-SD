@@ -127,7 +127,7 @@ public class ComputerBrain {
 		}
 	}
 	
-	/**Looks for any enemies in range at the units current location by attacking each location in the attackable locations.*/
+	/**Looks for any enemies in range at the rabbitmq.advancedWars.client.game.units current location by attacking each location in the attackable locations.*/
 	private boolean WannaHug(Base unit) {
 		for (int y = unit.y - unit.MaxAtkRange; y <= unit.y + unit.MaxAtkRange; y++) {
 			for (int x = unit.x - unit.MaxAtkRange; x <= unit.x + unit.MaxAtkRange; x++) {

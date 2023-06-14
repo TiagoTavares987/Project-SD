@@ -5,7 +5,7 @@ public class Infantry extends Base {
 		super(owner, xx, yy, active);
 		name = "Infantry";
 		nick = "Inf";
-		desc = "Weakest units here.";
+		desc = "Weakest rabbitmq.advancedWars.client.game.units here.";
 		img = 0;
 		speed = 4;
 		raider = true;

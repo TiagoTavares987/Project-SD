@@ -27,8 +27,9 @@ export RABBITMQ_SERVICES_PACKAGE=rabbitmq
 export PACKAGE=advancedWars
 export QUEUE_NAME_PREFIX=advancedWars
 export EXCHANGE_NAME_PREFIX=advancedWars
-export CONSUMER_CLASS_PREFIX=ObserverGuiClient
-export PRODUCER_CLASS_PREFIX=ObserverServer
+export CONSUMER_CLASS_PREFIX=ObserverServer
+export PRODUCER_CLASS_PREFIX=ObserverGuiClient
+export MAP=SmallVs
 
 #@REM ==== NETWORK STUFF ====
 export BROKER_HOST=localhost

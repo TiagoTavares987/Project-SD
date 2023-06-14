@@ -54,7 +54,7 @@ public class Game extends JFrame {
 	public static Image img_exts;
 	public static Boolean readytopaint;
 	
-	//This handles the different players and also is used to speed logic arrays (contains a list of all characters they own)
+	//This handles the different rabbitmq.advancedWars.client.game.players and also is used to speed logic arrays (contains a list of all characters they own)
 	public static List<Base> player = new ArrayList<Base>();
 	public static List<rmi.advancedWars.client.advancedWarsGame.buildings.Base> builds = new ArrayList<rmi.advancedWars.client.advancedWarsGame.buildings.Base>();
 	public static List<rmi.advancedWars.client.advancedWarsGame.units.Base> units = new ArrayList<rmi.advancedWars.client.advancedWarsGame.units.Base>();
@@ -77,7 +77,7 @@ public class Game extends JFrame {
 		setResizable(false);
 	    setLocationRelativeTo(null);
 				
-		//Creates all the gui elements and sets them up
+		//Creates all the rabbitmq.advancedWars.client.game.gui elements and sets them up
 		gui = new Gui(this);
 		add(gui);
 		gui.setFocusable(true);

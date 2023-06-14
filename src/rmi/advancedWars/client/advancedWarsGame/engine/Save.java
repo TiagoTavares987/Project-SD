@@ -10,9 +10,9 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 /**
- * When SaveGame() is called upon it grabs a screen shot of the current battle (current_player,days) and the important variables from the player, buildings, and unit lists.
+ * When SaveGame() is called upon it grabs a screen shot of the current battle (current_player,days) and the important variables from the player, rabbitmq.advancedWars.client.game.buildings, and unit lists.
  * It currently saves them in a property file, with each saved variable having their own line (it gets very long fast).
- * When LoadGame() is called, it will create a new battle, change the current day and player, and then loads the players / units / cities from here.
+ * When LoadGame() is called, it will create a new battle, change the current day and player, and then loads the rabbitmq.advancedWars.client.game.players / rabbitmq.advancedWars.client.game.units / cities from here.
  * An example is Unit#_Health = 50;
  * @author SergeDavid
  * @version 0.2
@@ -68,7 +68,7 @@ public class Save {
 			FileWriter fstream = new FileWriter(path + "savegame.properties");
 		    BufferedWriter out = new BufferedWriter(fstream);
 		    out.write("# A testing save file format for my advanced wars project, using property file as it is a list of properties...\n" +
-		    		  "# When loading map, skip the unit stage (will load units from here, maybe buildings too with health)" +	
+		    		  "# When loading map, skip the unit stage (will load rabbitmq.advancedWars.client.game.units from here, maybe rabbitmq.advancedWars.client.game.buildings too with health)" +
 		    		  "# I might change this to something close to the map.txt files\n" +
 		    		  "Map = " + Game.btl.mapname + "\n" +
 		    		  "CurrentPlayer = " + Game.btl.currentplayer + "\n" +
@@ -89,8 +89,8 @@ public class Save {
 	    			  "Player" + i + "_Defeated = " + false + "\n" +//If true, this character has lost. (Out of the game)
 	    			  "Player" + i + "_Team = " + ply.team + "\n" +//Current monetary balance
 	    			  "Player" + i + "_Money = " + ply.money + "\n" +//Current monetary balance
-	    			  "Player" + i + "_Kills = " + ply.kills + "\n" +//How many units they've killed
-	    			  "Player" + i + "_Loses = " + ply.loses + "\n" +//How many units they've lost
+	    			  "Player" + i + "_Kills = " + ply.kills + "\n" +//How many rabbitmq.advancedWars.client.game.units they've killed
+	    			  "Player" + i + "_Loses = " + ply.loses + "\n" +//How many rabbitmq.advancedWars.client.game.units they've lost
 	    			  "Player" + i + "_Power = " + ply.power + "\n" +//Current power level
 	    			  "Player" + i + "_Using = " + 0 + "\n" +//0 = none, 1 = using first power, 2 = using 2nd power
 	    			  "Player" + i + "_Npc = " + ply.npc + "\n";
@@ -139,7 +139,7 @@ public class Save {
 			LoadCities(configFile);
 			LoadUnits(configFile);
 			
-			//Changes the gui to match the appropriate bla bla bla
+			//Changes the rabbitmq.advancedWars.client.game.gui to match the appropriate bla bla bla
 			Game.gui.InGameScreen();
 		} 
 		catch (Exception e) {Game.error.ShowError("Saved game failed to load."); e.printStackTrace();}

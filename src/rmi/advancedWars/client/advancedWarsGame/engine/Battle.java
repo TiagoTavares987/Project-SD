@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 /**Put the game stuff in here so all I have to do is end/start this to make a game work or not.*/
 public class Battle {
-	/**A count of all the players in the game, used before Game.player is populated so this is required.*/
+	/**A count of all the rabbitmq.advancedWars.client.game.players in the game, used before Game.player is populated so this is required.*/
 	public int totalplayers = 2;
 	/**The current player who is playing, this loops back to 0 when it goes too high.*/
 	public int currentplayer = 0;
@@ -72,7 +72,7 @@ public class Battle {
 		Game.pathing.LastChanged++;
 	}
 	
-	/**Grabs the number of buildings a player owns.*/
+	/**Grabs the number of rabbitmq.advancedWars.client.game.buildings a player owns.*/
 	private int Buildingcount(int owner) {
 		int total = 0;
 		for (rmi.advancedWars.client.advancedWarsGame.buildings.Base bld : Game.builds) {
@@ -123,13 +123,13 @@ public class Battle {
 		}
 	}
 	public void MaxUsers(int max) {
-		//Setup for max players
+		//Setup for max rabbitmq.advancedWars.client.game.players
 		if (max<2) {totalplayers = 2;}
 		else if (max>12) {totalplayers = 12;}
 		else {totalplayers = max;}
-		//HACK: Change when I add more images to support more players.
+		//HACK: Change when I add more images to support more rabbitmq.advancedWars.client.game.players.
 		if (max>4) {totalplayers = 4;
-			Game.error.ShowError("The game currently supports only 4 players, not " + max + ".");
+			Game.error.ShowError("The game currently supports only 4 rabbitmq.advancedWars.client.game.players, not " + max + ".");
 		}
 	}
 	public void AddCommanders(int[] coms, boolean[] npc, int start, int city) {
@@ -168,7 +168,7 @@ public class Battle {
 				Game.units.remove(i);
 			}
 		}
-		//TODO: Change all buildings to be owned by the player. 
+		//TODO: Change all rabbitmq.advancedWars.client.game.buildings to be owned by the player.
 	}
 	
 }

@@ -4,7 +4,7 @@ import java.awt.Graphics2D;
 import rmi.advancedWars.client.advancedWarsGame.engine.Game;
 
 /**
- * This draws the quick info for units and buildings. (Health, Capturing, Low Ammo/Fuel)
+ * This draws the quick info for rabbitmq.advancedWars.client.game.units and rabbitmq.advancedWars.client.game.buildings. (Health, Capturing, Low Ammo/Fuel)
  * @param g = The Graphics2D to drawn too.
  * @param resize = Size setup of the window to use.
  * @author SergeDavid

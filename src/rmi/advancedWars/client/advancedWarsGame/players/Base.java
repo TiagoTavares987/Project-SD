@@ -29,7 +29,7 @@ public class Base {
 	//Unit selection and unit end game statistics (total kills / loses)
 	public boolean unitselected;//If the character has selected a unit or not. (using this instead of selectedunit=-1)
 	public int selectedunit = 0;//Which unit is currently selected to use.
-	public int usedunits;//How many units does the player have left until turn ends. Currently unused.
+	public int usedunits;//How many rabbitmq.advancedWars.client.game.units does the player have left until turn ends. Currently unused.
 	public int kills;
 	public int loses;
 	
@@ -76,7 +76,7 @@ public class Base {
 		}
 	}
 	
-	/**The first special ability the player can use when the players power>level1. leave level1 at 0 to remove access to this ability.*/
+	/**The first special ability the player can use when the rabbitmq.advancedWars.client.game.players power>level1. leave level1 at 0 to remove access to this ability.*/
 	public void MyPower1() {}
 	/**The second ability, I might have these point to something like Game.powers.QuickFix();*/
 	public void MyPower2() {}

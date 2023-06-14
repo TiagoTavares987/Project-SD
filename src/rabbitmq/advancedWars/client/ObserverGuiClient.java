@@ -75,19 +75,6 @@ public class ObserverGuiClient {
     }
 
     /**
-     * Sends msg through the _05_observer to the exchange where all observers are binded
-     *
-     * @param msgToSend
-     */
-    private void sendMsg(String user, String msgToSend) {
-        try {
-            msgToSend = "["+user+"]: " + msgToSend;
-            this.observer.sendMessage(msgToSend);
-        } catch (IOException ex) {
-            Logger.getLogger(ObserverGuiClient.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {

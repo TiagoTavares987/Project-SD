@@ -4,7 +4,7 @@ import java.awt.Point;
 
 /**
  * This controls what you can see in game (on the map) and moving around along it.
- * Place MoveView(); in the game-loop (100ms) to automate it (Teleporting across the map between switching viewed units / turns is automatic)
+ * Place MoveView(); in the game-loop (100ms) to automate it (Teleporting across the map between switching viewed rabbitmq.advancedWars.client.game.units / turns is automatic)
  * Use Viewable(x,y); to check if something can be seen on screen and ViewX(); / ViewY(); to grab the offsets (in case it changes from a direct copy + paste).
  * @author SergeDavid
  * @version 0.2

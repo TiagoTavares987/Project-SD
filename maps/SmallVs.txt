@@ -1,9 +1,9 @@
 # Author Serge-David
 # Map File testing, lets see if we can make this pretty. Map name is it's file name.
-# 1 = Map Info : width(xx) height(xx) rmi.advancedWars.advancedWarsGame.players(x)
+# 1 = Map Info : width(xx) height(xx) rmi.advancedWars.advancedWarsGame.rabbitmq.advancedWars.client.game.players(x)
 # 2 = Extra Info : Creator(String) Description(String) [A-z 0-9]
 # 3 = Terrain Info (row) : tile(x) (To be xx for 256 types instead of 16)
-# 4 = Building Info : owner(x) x(xx) y(xx) type(xx) TODO: Find a way to add neutral rmi.advancedWars.advancedWarsGame.rmi.advancedWars.advancedWarsGame.buildings without messing with player counts, maybe leaving that byte blank?
+# 4 = Building Info : owner(x) x(xx) y(xx) type(xx) TODO: Find a way to add neutral rmi.advancedWars.advancedWarsGame.rmi.advancedWars.advancedWarsGame.rabbitmq.advancedWars.client.game.buildings without messing with player counts, maybe leaving that byte blank?
 # 5 = Unit info : owner(x) x(xx) y(xx) type(xx)
 1 07072
 2 Serge-David This is a description of the map.

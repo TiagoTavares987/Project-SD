@@ -54,7 +54,7 @@ public class StartMenu implements ActionListener {
 	private void AddGui() {
 		Game.gui.add(New);
 		Game.gui.add(Load);
-		//Game.gui.add(Join);
+		//Game.rabbitmq.advancedWars.client.game.gui.add(Join);
 		Game.gui.add(Editor);
 		Game.gui.add(Credits);
 		Game.gui.add(Options);

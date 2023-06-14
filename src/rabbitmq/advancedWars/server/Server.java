@@ -10,7 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Server {
-    //Reference for gui
+    //Reference for rabbitmq.advancedWars.client.game.gui
     private ObserverServer gui;
     //Preferences for exchange...
     private final Channel channelToRabbitMq;
@@ -19,7 +19,7 @@ public class Server {
     //private final String[] exchangeBindingKeys;
     private final String exchangeBindingKeys;
     private final String messageFormat;
-    private final HashMap<String, Integer> waitingList = new HashMap<>();
+    private final HashMap<String, Integer> waitingList = new HashMap<>(); // identificador do jogo e nr jogadores na lista de espera
 
     public Server(ObserverServer gui, String host, int port, String user, String pass, String exchangeName, BuiltinExchangeType exchangeType, String messageFormat, String bindingKeys) throws IOException, TimeoutException {
 
@@ -51,9 +51,13 @@ public class Server {
 
             System.out.println(" [*] Waiting for messages. To exit press CTRL+C");
             channelToRabbitMq.confirmSelect();
+            System.out.println("confirm");
             channelToRabbitMq.queueBind(queue, exchangeName, "server.*");
+            System.out.println("queuebind");
             channelToRabbitMq.waitForConfirms();
+            System.out.println("waitconfirm");
 
+            // recebe mensagem
             DeliverCallback deliverCallback = (consumerTag, delivery) -> {
                 String message = new String(delivery.getBody(), messageFormat);
                 String routingKey = delivery.getEnvelope().getRoutingKey();
@@ -61,23 +65,24 @@ public class Server {
 
                 if(routingKey.equals("server.create")) {
                     System.out.println("received message " + message + " from routing key server.create");
-                    String game[] = message.split(":");
+                    String game[] = message.split("-");
                     waitingList.put(game[0], Integer.valueOf(game[1])-1);
                 }
                 else if(routingKey.equals("server.join")) {
-                    System.out.println("received message " + message + " from routing key server.create");
-                    String game[] = message.split(":");
+                    System.out.println("received message " + message + " from routing key server.join");
+                    String game[] = message.split("-");
                     waitingList.put(game[0], waitingList.get(game[0])-1);
                 }
                 else {
+                    // quando é msg do game, envia de volta para os varios clientes
                     String gameId = routingKey.split("\\.")[1];
                     setReceivedMessage(message, gameId);
                 }
                 System.out.println(" [x] Consumer Tag [" + consumerTag + "] - Received '" + message + "'");
             };
             CancelCallback cancelCallback = consumerTag -> System.out.println(" [x] Consumer Tag [" + consumerTag + "] - Cancel Callback invoked!");
-            boolean autoAck = false;
-            this.channelToRabbitMq.basicConsume("WarGamesWorkerQueue", autoAck, deliverCallback, consumerTag -> { });
+
+            this.channelToRabbitMq.basicConsume(queue, true, deliverCallback, cancelCallback);
         } catch (Exception e) {
             Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, e.toString());
         }
@@ -102,7 +107,7 @@ public class Server {
         if(waitingList.get(gameId) > 0)
             return;
 
-        this.sendMessage(receivedMessage, "client." + gameId);
+        this.sendMessage(receivedMessage, "client." + gameId); // propaga as msg para clientes todos
     }
 
 }

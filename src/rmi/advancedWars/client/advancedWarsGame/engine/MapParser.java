@@ -44,14 +44,14 @@ public class MapParser {
 		} 
 		catch (Exception e) {Game.error.ShowError("The map failed to save:" + e.getMessage());}
 	}
-	private String encodeInfo() {//TODO: Total players. (start with 2, and add more depending on unit and building owners.)
+	private String encodeInfo() {//TODO: Total rabbitmq.advancedWars.client.game.players. (start with 2, and add more depending on unit and building owners.)
 		String w = Integer.toHexString(Game.map.width-1);if (w.length()<=1) {w = "0" + w;}
 		String h = Integer.toHexString(Game.map.height-1);if (h.length()<=1) {h = "0" + h;}
 		return "1 " + w + h + "2";
 	}
 	/**Adds the current player's name with a description of the map to the map file separated by the first space*/
 	private String encodeDesc() {
-		//TODO: Replace name with current players name, and leave description for manliness?
+		//TODO: Replace name with current rabbitmq.advancedWars.client.game.players name, and leave description for manliness?
 		return "\n2 " + "PlayerName" + " " + "Description of Map";
 	}
 	/**Turns the building list into a string. (and sorts them into proper order)*/
@@ -187,7 +187,7 @@ public class MapParser {
 	 * 1 = Byte
 	 * xx = Map Width
 	 * yy = Map Height
-	 * x = Total players*/
+	 * x = Total rabbitmq.advancedWars.client.game.players*/
 	private void ParseInfo(String info) {
 		if (info.length()>5||info.length()<5) {
 			Game.error.ShowError("Map info is corrupt.");
@@ -202,7 +202,7 @@ public class MapParser {
 			Game.map.desc = info[1];
 		}
 	}
-	/**This is for decoding the terrain, it currently goes with 1 line = 1 row
+	/**This is for decoding the rabbitmq.advancedWars.client.game.terrain, it currently goes with 1 line = 1 row
 	 * 2 = Byte
 	 * x = Terrain (to be split into xx, maybe xx:x)*/
 	private void ParseTerrain(String info) {
@@ -222,7 +222,7 @@ public class MapParser {
 		terrain++;
 	}
 	/**Creates a building by owner at x/y and type
-	 * f = Owner (0-11 are players, 15 is neutral, 12-14 are unused)
+	 * f = Owner (0-11 are rabbitmq.advancedWars.client.game.players, 15 is neutral, 12-14 are unused)
 	 * ff = type
 	 * x location (x)
 	 * y location (y)*/

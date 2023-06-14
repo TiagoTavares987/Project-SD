@@ -17,7 +17,7 @@ import java.util.Map;
 
 /**
  * Keyboard handling for the game along with the mouse setup for game handling.
- * Menus are being moved to gui.gms
+ * Menus are being moved to rabbitmq.advancedWars.client.game.gui.gms
  * @author SergeDavid
  * @version 0.1
  */

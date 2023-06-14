@@ -12,7 +12,7 @@ import javax.swing.JPanel;
  * This Class handles showing all the error messages that crop up through the game.
  * ErrorTicker(); Needs to be placed in the game loop (fps section preferred) so that the message disappears after a set time. (6 seconds)
  * To display a message, just call ShowError("Stupid message!");
- * Include if(showing) {gui.add(this);} when changing gui elements (As I remove all elements when changing between game states such as in game / main menu / editor)
+ * Include if(showing) {rabbitmq.advancedWars.client.game.gui.add(this);} when changing rabbitmq.advancedWars.client.game.gui elements (As I remove all elements when changing between game states such as in game / main menu / editor)
  * @author SergeDavid
  * @version 0.2
  */
@@ -46,7 +46,7 @@ public class ErrorHandler extends JPanel {
 		showing=true;
 		showtime = 5;
 	}
-	/**This removes the error message from the gui and sets the boolean to false.*/
+	/**This removes the error message from the rabbitmq.advancedWars.client.game.gui and sets the boolean to false.*/
 	private void HideError() {
 		if (hiddenlist.isEmpty()) {
 			Game.gui.remove(this);
